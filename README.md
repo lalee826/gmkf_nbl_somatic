@@ -17,13 +17,16 @@ Installation instructions for Docker engine (Linux only) can be found here: http
 Installation instructions for Docker Desktop (Windows/Mac/Linux) can be found here: https://docs.docker.com/desktop/  
 
 After installation, navigate to the directory where the Dockerfile is saved and create a Docker image with the following command  
- <code> docker build -t <image name> </code>  
+ <code> docker build -t (image name) </code>  
 
 Once completed, open a Docker container with port 8787 allowing usage of rstudio and port 8888 allowing jupyter notebook  
- <code> docker run --rm -ti -e PASSWORD=none -p 8787:8787 -p 8888:8888 <image name> </code>  
+ <code> docker run --rm -ti -e PASSWORD=none -p 8787:8787 -p 8888:8888 (image name) </code>  
+
+You can view the list of open containers and their names with  
+ <code> docker container list </code>  
 
 When a container is created, navigate to it using the command:  
- <code> docker exec -it <container name> /bin/bash </code>  
+ <code> docker exec -it (container name) /bin/bash </code>  
 
 Once inside the container, clone this repository  
  <code> git clone https://www.github.com/lalee826/gmkf_nbl_somatic </code>  
