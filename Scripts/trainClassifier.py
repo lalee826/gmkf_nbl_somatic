@@ -8,35 +8,28 @@ Author: Alex Lee
 Date: 9/19/2019
 '''
 
-
 #%%Import packages
 import pandas as pd
 import numpy as np
 import os
-from keras.models import Sequential
-from keras.layers import Dense, Dropout
-from keras.wrappers.scikit_learn import KerasClassifier
-from keras.regularizers import l2
-import keras
 import sklearn
 from sklearn.model_selection import KFold
 from sklearn.model_selection import cross_val_predict
 from sklearn.model_selection import train_test_split
 from sklearn import preprocessing
 from sklearn import metrics
-
 import matplotlib.pyplot as plt
-#import seaborn as sns
 from itertools import cycle
-#import deepsvr
-#import pydot,pydotplus,graphviz
-#import analysis_utils
+from tensorflow import keras
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense, Dropout
+from tensorflow.keras.wrappers.scikit_learn import KerasClassifier
+from tensorflow.keras.regularizers import l2
 
+workdir = '/rocker-build/gmkf_nbl_somatic/'
 
 #%% Import and prepare training data
-#workdir = '/Volumes/SSD/Alex/gmfk/deepsvr/'
-#trainSet = workdir + 'DeepSVR/data/training_data_preprocessed.pkl'
-trainSet = 'C:/Users/LEEL7/Documents/gmkf/deepsvr/DeepSvr/data/training_data_preprocessed.pkl'
+trainSet = workdir + 'Data/deepSVR_traindata.pkl'
 train = pd.read_pickle(trainSet)
 #remove AML samples
 train = train[train['disease_AML'] != 1]
@@ -87,7 +80,8 @@ train = train.rename(columns={'normal_ref_avg_num_mismaches_as_fraction':'normal
 trainCols = train.columns.values
 
 #import our own data
-tmbdata = pd.read_pickle('E:/Alex/gmfk/deepsvr/deepsvr_1stpass_tmb/deepsvr_tmb/get_features/deepsvrfeatures012920.pkl')
+nblData = workdir + 'Data/gmkf_matched_features.pkl'
+tmbdata = pd.read_pickle(nblData)
 tmbdata = tmbdata.rename(columns={'normal_ref_avg_num_mismaches_as_fraction':'normal_ref_avg_num_mismatches_as_fraction',
                       'tumor_ref_avg_num_mismaches_as_fraction':'tumor_ref_avg_num_mismatches_as_fraction',
                       'normal_var_avg_num_mismaches_as_fraction':'normal_var_avg_num_mismatches_as_fraction',
@@ -104,9 +98,6 @@ datass = data_scaled.iloc[:100,:]
 
 train.shape #(32308, 59)
 data_scaled.shape #(12481, 58)
-
-''' TRAINING AND CROSS-VALIDATION BELOW '''
-''' NEXT WE PROCEED TO FITTING NN ON TRAIN DATA AND GETTING PREDICTIONS FOR OUR DATA '''
 
 #%% Split train data into features and labels
 train_y = pd.get_dummies(train.call).astype(float).values #get labels
@@ -139,39 +130,20 @@ model.add(Dense(n_classes,kernel_initializer='normal',activation='softmax'))
 #determine how to compile model
 model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
 # fit model on train set
-fitmodel = model.fit(train_x,train_y, epochs=200, verbose=1)#, batch_size=2000)
+fitmodel = model.fit(train_x,train_y, epochs=100, verbose=1)#, batch_size=2000)
 
 #%% Make predictions
 #evaluate model on test set
-#_, test_acc = model.evaluate(x_test, y_test, verbose=1)
-data_pred_labels = model.predict(data_scaled, verbose=1)
+data_pred_labels = model.predict(data_scaled.iloc[:,:58], verbose=1)
 predicted = np.array([list(a).index(max(list(a))) for a in list(data_pred_labels)])
-len(predicted)
-print(np.bincount(predicted)) #
+#look at prediction counts
+print(np.bincount(predicted))
 '''
-428 - ambiguous
-187 - fail
-7807 - somatic
-92% somatic
+counts are shown as ambiguous, fail, and somatic
 '''
 
-#2nd pass 1-29-20
-'''
-2038 - ambiguous
-90 - fail
-10353 - somatic
-82% somatic
-'''
-
-
-
-#%%
+#add classifier predictions to each variant
 data_scaled['classification'] = predicted
-
-#save the final variants classifications
-data_scaled.to_csv('E:/Alex/gmfk/deepsvr/deepsvr_1stpass_tmb/deepsvr_tmb/1stpass_vars_classified_012920.tsv',sep='\t',header=True,index=True)
-data_scaled.to_pickle('E:/Alex/gmfk/deepsvr/deepsvr_1stpass_tmb/deepsvr_tmb/1stpass_vars_classified_012920.pkl')
-
 
 
 
