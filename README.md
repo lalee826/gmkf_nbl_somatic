@@ -4,10 +4,10 @@ This is the data and analysis repository for the somatic analyses of the Gabriel
 
 ## Directories
 
-Data - All necessary data files and tables to perform analyses. Many of these are results files from the analyses that can be reproduced using the scripts provided.
-Docker - Dockerfiles used to create an image that contains all necessary software with appropriate versions to replicate analyses.
-Scripts - All necessary scripts to perform analyses in R and Python.
-Supplemental - Supplementary data tables, figures, and analyses from the manuscript
+Data - All necessary data files and tables to perform analyses. Many of these are results files from the analyses that can be reproduced using the scripts provided.  
+Docker - Dockerfiles used to create an image that contains all necessary software with appropriate versions to replicate analyses.  
+Scripts - All necessary scripts to perform analyses in R and Python.  
+Supplemental - Supplementary data tables, figures, and analyses from the manuscript  
 
 
 ### Usage
