@@ -41,7 +41,7 @@ Start rstudio if desired
  <code> rstudio-server start </code>  
 
 
-Rstudio can be opened on your local machine by navigating to [localhost:8787](localhost:8787) in your web browser.  
+Rstudio can be opened on your local machine by navigating to [https://localhost:8787](https://localhost:8787) in your web browser.  
 
 
-Jupyter Notebook can be opened on your local machine by navigating to localhost:8888 in your web browser. You will need to copy/paste the token that is shown in your terminal after opening the Docker container.  
+Jupyter Notebook can be opened on your local machine by navigating to https://localhost:8888 in your web browser. You will need to copy/paste the token that is shown in your terminal after opening the Docker container.  
