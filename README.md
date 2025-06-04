@@ -11,7 +11,7 @@ Supplemental - Supplementary data tables, figures, and analyses from the manuscr
 
 
 ### Usage
-The easiest way to replicate the analyses presented in the manuscript and additional studies included in this repository is to through Docker.  A dockerfile has been included that can be used to create an image on a local machine.  
+The easiest way to replicate the analyses presented in the manuscript and additional studies included in this repository is to through Docker.  A dockerfile has been included that can be used to create an image on a local machine. Opening a subsequent container from this image includes all necessary softwares to perform analyses in this repository.  
 
 Installation instructions for standalone Docker engine (recommended for Linux only) can be found here: https://docs.docker.com/engine/  
 Installation instructions for Docker Desktop (Windows/Mac/Linux) can be found here: https://docs.docker.com/desktop/  
@@ -34,6 +34,6 @@ Once inside the container, clone this repository
 Start rstudio if desired  
  <code> rstudio-server start </code>  
 
-Rstudio can be opened on your local machine by navigating to localhost:8787 in your web browser.  
+Rstudio can be opened on your local machine by navigating to [localhost:8787](localhost:8787) in your web browser.  
 
 Jupyter Notebook can be opened on your local machine by navigating to localhost:8888 in your web browser. You will need to copy/paste the token that is shown in your terminal after opening the Docker container.  
