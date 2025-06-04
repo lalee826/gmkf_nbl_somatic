@@ -16,7 +16,7 @@ The easiest way to replicate the analyses presented in the manuscript and additi
 Installation instructions for standalone Docker engine (recommended for Linux only) can be found here: https://docs.docker.com/engine/  
 Installation instructions for Docker Desktop (Windows/Mac/Linux) can be found here: https://docs.docker.com/desktop/  
 
-After installation, navigate to the directory where the Dockerfile is saved and create a Docker image with the following command  
+After installation, navigate to the directory where the Dockerfile and helper shell script are saved and create a Docker image with the following command  
  
  <code> docker build -t (image name) </code>  
 
