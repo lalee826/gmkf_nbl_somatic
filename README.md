@@ -25,7 +25,7 @@ Once completed, open a Docker container with port 8787 allowing usage of rstudio
 You can view the list of open containers and their names with  
  <code> docker container list </code>  
 
-When a container is created, navigate to it using the command:  
+When a container is created, navigate to it in a different window using the command:  
  <code> docker exec -it (container name) /bin/bash </code>  
 
 Once inside the container, clone this repository  
