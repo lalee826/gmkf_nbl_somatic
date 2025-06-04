@@ -1,5 +1,6 @@
 ########################## Visualizations - Figure 4
-#* Date: 06-01-2022
+# Description: Code to generate panels for figure 4. Data files are generated from the following scripts:
+#
 
 library(parallel)
 library(data.table)
@@ -9,10 +10,10 @@ library(RColorBrewer)
 library(tidyr)
 library(grid)
 library(gtable)
-workdir = "/media/alex/Data/gmkf_data/"
+workdir = "/rocker-build/gmkf_nbl_somatic/Data/"
 
 ### tumor data file
-tmb = read.table('/media/alex/Data/gmkf_data/sv_analysis_macbook/tmbv7.tsv',sep='\t',stringsAsFactors = FALSE,header=TRUE)
+tmb = read.table(paste0(workdir,'tumor_clinical_data.tsv'),sep='\t',stringsAsFactors = FALSE,header=TRUE)
 
 ######################################### MUTATION BURDEN PLOT
 tmb$group2 <- factor(tmb$group2,levels=c('Low Risk,Non-Amplified','Low Risk,MYCN-Amplified','Intermediate Risk','High Risk,Non-Amplified',
@@ -116,16 +117,16 @@ mutpermbplot
 ##########################################################################################################
 #* add in mutation signatures/tumor purity/MES-ADRN plot
 ## read in mutsig cluster data
-msigc = read.table(paste0(workdir,'mutation_signatures/results/cluster_2022.tsv'),stringsAsFactors=FALSE,header=TRUE,row.names=NULL)
+msigc = read.table(paste0(workdir,'mutsig_cluster_results.tsv'),stringsAsFactors=FALSE,header=TRUE,row.names=NULL)
 tmb$mutsigcluster = sapply(tmb$Tumor_Sample_Barcode,FUN=function(x){msigc[msigc$sample_id==x,'cluster']})
 #import mes/adrn scores
-maDF = read.table('/media/alex/Data/gmkf_data/RNA/sig_analysis_results/mes_adrn_scores.tsv',sep='\t',stringsAsFactors=FALSE,header=TRUE,row.names=NULL)
+maDF = read.table(paste0(workdir,'mes_adrn_scores.tsv'),sep='\t',stringsAsFactors=FALSE,header=TRUE,row.names=NULL)
 maDF = maDF[,c('SAMPLE','CLASS')]
 colnames(maDF) = c('case_id','feature')
 #import gsva quantile results
-gDF = read.table('/media/alex/Data/gmkf_data/RNA/sig_analysis_results/gsva_results_quantiles_plot_allgenes.tsv',sep='\t',stringsAsFactors=FALSE,header=TRUE,row.names=NULL)
+gDF = read.table(paste0(workdir,'gsva_results_quantiles_plot_allgenes.tsv'),sep='\t',stringsAsFactors=FALSE,header=TRUE,row.names=NULL)
 #import purity results
-purDF = read.table('/media/alex/Data/gmkf_data/tumor_purity/purity_plotting.tsv',sep='\t',stringsAsFactors=FALSE,header=TRUE,row.names=NULL)
+purDF = read.table(paste0(workdir,'tumor_purity_results.tsv'),sep='\t',stringsAsFactors=FALSE,header=TRUE,row.names=NULL)
 purDF = purDF[purDF$case_id %in% unique(gDF$case_id),]
 #join data
 pDF = rbind(maDF,purDF)
@@ -164,7 +165,7 @@ pDF$xcord = sapply(pDF$case_id,FUN=function(x){xDict[[x]]})
 mPlot <- ggplot(data=pDF,aes(x=xcord,y=val,fill=feature)) + geom_bar(stat='identity',width=1) + 
   theme_minimal() +
   theme(axis.text.x=element_blank(),axis.ticks.x=element_blank(),axis.title.x=element_blank()) + 
-  theme(axis.text.y=element_text(size=13),axis.title.y=element_text(size=18,margin=margin(t=0,r=100,b=0,l=0),angle=0)) + 
+  theme(axis.text.y=element_text(size=13),axis.title.y=element_blank()) + 
   theme(panel.grid.major=element_blank(),panel.grid.minor=element_blank()) +
   scale_fill_manual(values=pal) +
   #scale_fill_manual(values=pal,labels = c('Mesenchymal','Slight Mesenchymal','Slight Adrenergic','Adrenergic','No Data',rep('Negative',5),'Zero',rep('Positive',5),'Strong Outlier','No Data')) +
@@ -190,15 +191,13 @@ gt$vp <- viewport(width = unit(fig_size[1], "in") - margin, height=unit(fig_size
 grid.draw(gt)
 
 
-
-
 ##########################################################################################################
 ##########################################################################################################
 ##########################################################################################################
 ############################### Mut sig plots
 #stacked bar charts of sig compositions
 #remove any cluster with 0 across all samples
-csigs = read.table(paste0(workdir,'mutation_signatures/results/cosmicv3_sig_contribution_2022.tsv'),stringsAsFactors=FALSE,header=TRUE,row.names=1)
+csigs = read.table(paste0(workdir,'cosmicv3_sig_contribution.tsv'),stringsAsFactors=FALSE,header=TRUE,row.names=1)
 colnames(csigs)
 x = csigs %>% summarise(across(SBS1:SBS94,sum)) %>% as.data.frame()
 sigRemove = names(x)[x == 0]
@@ -382,7 +381,3 @@ pieLabels = c('SBS40 (Unkown Etiology)','SBS18 (NB-enriched)','SBS89 (Unkown Eti
               'SBS8 (Unkown Etiology)','SBS1 (Endogenous Deamination)','SBS39 (Unkown Etiology)','SBS37 (Unkown Etiology)')
 pieLabels = c(pieLabels,rep('',(dim(pg)[1])-length(pieLabels)))
 pie(pg$total,rev(pieLabels),main='Total Mutation Signature Contributions in Cluster 8',col=fill,cex=1.5,cex.main=2)
-
-
-
-
