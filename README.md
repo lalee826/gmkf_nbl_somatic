@@ -13,7 +13,7 @@ Supplemental - Supplementary data tables, figures, and analyses from the manuscr
 ### Usage
 The easiest way to replicate the analyses presented in the manuscript and additional studies included in this repository is to through Docker.  A dockerfile has been included that can be used to create an image on a local machine.  
 
-Installation instructions for Docker engine (Linux only) can be found here: https://docs.docker.com/engine/  
+Installation instructions for standalone Docker engine (recommended for Linux only) can be found here: https://docs.docker.com/engine/  
 Installation instructions for Docker Desktop (Windows/Mac/Linux) can be found here: https://docs.docker.com/desktop/  
 
 After installation, navigate to the directory where the Dockerfile is saved and create a Docker image with the following command  
