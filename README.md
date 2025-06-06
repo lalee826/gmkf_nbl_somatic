@@ -36,11 +36,6 @@ Once inside the container, clone this repository
  
  <code> git clone https://www.github.com/lalee826/gmkf_nbl_somatic </code>  
 
-Start rstudio if desired  
- 
- <code> rstudio-server start </code>  
-
-
 Rstudio can be opened on your local machine by navigating to localhost:8787 in your web browser. The username/password will be rstudio/rstudio.
 
 
