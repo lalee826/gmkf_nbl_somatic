@@ -40,3 +40,7 @@ Rstudio can be opened on your local machine by navigating to localhost:8787 in y
 
 
 Jupyter Notebook can be opened on your local machine by navigating to localhost:8888 in your web browser. You will need to copy/paste the token that is shown in your terminal after opening the Docker container.  
+
+#### Raw Data
+
+Raw data is not stored in this repository. The files found in this repository's raw data folder are example files to demonstrate usage of the scripts. The full raw data can be obtained through the Kids First Data Resource Portal (https://portal.kidsfirstdrc.org/)
