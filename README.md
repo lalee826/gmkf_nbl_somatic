@@ -43,4 +43,6 @@ Jupyter Notebook can be opened on your local machine by navigating to localhost:
 
 #### Raw Data
 
-Raw data is not stored in this repository. The files found in this repository's raw data folder are example files to demonstrate usage of the scripts. The full raw data can be obtained through the Kids First Data Resource Portal (https://portal.kidsfirstdrc.org/)
+Raw data is not stored in this repository. The files found in this repository's raw data folder are example files to demonstrate usage of the scripts. The full raw data can be obtained through the Kids First Data Resource Portal (https://portal.kidsfirstdrc.org/).  
+
+Please note that not all raw data files used in analyses from the manuscript can be found in the portal, for example, raw output from Sequenza, Shatterseek, GridSS, and others.
