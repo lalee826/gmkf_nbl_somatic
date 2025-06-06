@@ -92,7 +92,12 @@ RUN R -e "install.packages('https://cran.r-project.org/src/contrib/Archive/devto
  && R -e "BiocManager::install('GenomicFeatures')" \      
  && R -e "BiocManager::install('VariantAnnotation')" \      
  && R -e "BiocManager::install('NMF')" \      
- && R -e "BiocManager::install('biovizBase')"
+ && R -e "BiocManager::install('biovizBase')" \
+ && R -e "install.packages('shinythemes', dependencies=TRUE, repos='http://cran.rstudio.com/')" \
+ && R -e "install.packages('R.utils', dependencies=TRUE, repos='http://cran.rstudio.com/')" \
+ && R -e "install.packages('extremevalues', dependencies=TRUE, repos='http://cran.rstudio.com/')" \
+ && R -e "install.packages('gplots', dependencies=TRUE, repos='http://cran.rstudio.com/')" \
+ && R -e "BiocManager::install('GSVA', version='3.10', ask=FALSE)"
 
 #install pip for python 3 and other dependencies
 RUN apt-get update && apt-get install -y \
