@@ -1,6 +1,6 @@
 """
 This script prepares raw VCF files produced by the structural variant callers GridSS, Novobreak, Lumpy, and Manta for downstream analysis
-The output is an events table describing SV types with all relevant fields for filtering high confidence calls
+The output is an table of SV calls with relevant fields for downstream processing
 """
 
 import os
