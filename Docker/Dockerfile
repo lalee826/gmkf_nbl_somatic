@@ -119,6 +119,22 @@ RUN pip3 install \
     tensorflow==1.15.0 \
     jupyterlab ipykernel
 
+#Additional R packages
+RUN R -e "install.packages('https://cran.r-project.org/src/contrib/Archive/lattice/lattice_0.20-38.tar.gz', repos=NULL, type='source')" \
+ && R -e "install.packages('https://cran.r-project.org/src/contrib/Archive/Matrix/Matrix_1.2-15.tar.gz', repos=NULL, type='source')" \
+ && R -e "install.packages('https://cran.r-project.org/src/contrib/Archive/survival/survival_3.1-12.tar.gz', repos=NULL, type='source')" \
+ && R -e "install.packages('https://cran.r-project.org/src/contrib/Archive/lubridate/lubridate_1.7.10.tar.gz', repos=NULL, type='source')" \
+ && R -e "install.packages('ggrepel', dependencies=TRUE, repos='http://cran.rstudio.com/')" \
+ && R -e "install.packages('https://cran.r-project.org/src/contrib/Archive/ggsci/ggsci_2.9.tar.gz', repos=NULL, type='source')" \
+ && R -e "install.packages('https://cran.r-project.org/src/contrib/Archive/cowplot/cowplot_0.9.4.tar.gz', repos=NULL, type='source')" \
+ && R -e "install.packages('ggsignif', dependencies=TRUE, repos='http://cran.rstudio.com/')" \
+ && R -e "install.packages('polynom', dependencies=TRUE, repos='http://cran.rstudio.com/')" \
+ && R -e "install.packages('https://cran.r-project.org/src/contrib/Archive/ggpubr/ggpubr_0.1.9.tar.gz', repos=NULL, type='source')" \
+ && R -e "install.packages('maxstat', dependencies=TRUE, repos='http://cran.rstudio.com/')" \
+ && R -e "install.packages('survMisc', dependencies=TRUE, repos='http://cran.rstudio.com/')" \
+ && R -e "install.packages('cmprsk', dependencies=TRUE, repos='http://cran.rstudio.com/')" \
+ && R -e "install.packages('https://cran.r-project.org/src/contrib/Archive/survminer/survminer_0.4.3.tar.gz', repos=NULL, type='source')"
+
 #Add custom startup script
 COPY start_services.sh /usr/local/bin/start_services.sh
 RUN chmod +x /usr/local/bin/start_services.sh
