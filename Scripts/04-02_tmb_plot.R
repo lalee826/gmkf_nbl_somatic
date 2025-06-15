@@ -13,22 +13,22 @@ library(gtable)
 workdir = "/rocker-build/gmkf_nbl_somatic/Data/"
 
 ### tumor data file
-tmb = read.table(paste0(workdir,'tumor_clinical_data.tsv'),sep='\t',stringsAsFactors = FALSE,header=TRUE)
+clinData = read.table(paste0(workdir,'tumor_clinical_data.tsv'),sep='\t',stringsAsFactors = FALSE,header=TRUE)
 
 ######################################### MUTATION BURDEN PLOT
-tmb$group2 <- factor(tmb$group2,levels=c('Low Risk,Non-Amplified','Low Risk,MYCN-Amplified','Intermediate Risk','High Risk,Non-Amplified',
+clinData$group2 <- factor(clinData$group2,levels=c('Low Risk,Non-Amplified','Low Risk,MYCN-Amplified','Intermediate Risk','High Risk,Non-Amplified',
                                          'High Risk,MYCN-amplified'))
-sample_order <- tmb$Tumor_Sample_Barcode[order(tmb$group2,tmb$Total_Mutations_vaf_cutoff,decreasing=TRUE)]
-tmb$xcord <- sapply(as.character(tmb$Tumor_Sample_Barcode),FUN=function(x){(1:nrow(tmb))[sample_order==x]})
-tmb$Tumor_Sample_Barcode <- factor(tmb$Tumor_Sample_Barcode,levels=sample_order)
+sample_order <- clinData$Tumor_Sample_Barcode[order(clinData$group2,clinData$Total_Mutations_vaf_cutoff,decreasing=TRUE)]
+clinData$xcord <- sapply(as.character(clinData$Tumor_Sample_Barcode),FUN=function(x){(1:nrow(clinData))[sample_order==x]})
+clinData$Tumor_Sample_Barcode <- factor(clinData$Tumor_Sample_Barcode,levels=sample_order)
 
 #add background panel colors
-panel_bg <- data.frame(tmb %>% group_by(group2) %>% tally())
+panel_bg <- data.frame(clinData %>% group_by(group2) %>% tally())
 panel_bg$group2 <- factor(panel_bg$group2,levels=c('High Risk,MYCN-amplified','High Risk,Non-Amplified','Intermediate Risk','Low Risk,MYCN-Amplified',
                                                    'Low Risk,Non-Amplified'))
 panel_bg <- panel_bg[order(panel_bg$group2),]
 panel_bg$start <- c(1,(cumsum(panel_bg$n)[1:(nrow(panel_bg)-1)]+1))
-panel_bg$end <- c((panel_bg$start-1)[2:nrow(panel_bg)],nrow(tmb))
+panel_bg$end <- c((panel_bg$start-1)[2:nrow(panel_bg)],nrow(clinData))
 panel_bg$sample_start <- sapply(panel_bg$start,FUN=function(x){sample_order[x]})
 panel_bg$sample_end <- sapply(panel_bg$end,FUN=function(x){sample_order[x]})
 panel_bg$sample_start <- factor(panel_bg$sample_start,levels=sample_order)
@@ -40,12 +40,12 @@ panel_bg$label_graph <- c('High Risk,\nMYCN-amplified','High Risk,\nNon-Amplifie
                           'Low Risk,\nNon-Amplified')
 panel_bg$label_graph <- factor(panel_bg$label_graph,levels=c('High Risk,\nMYCN-amplified','High Risk,\nNon-Amplified','Intermediate\nRisk','Low Risk,\nMYCN-Amplified',
                                                              'Low Risk,\nNon-Amplified'))
-group_meds <- data.frame(tmb %>% group_by(group2) %>% summarise(median=median(TMB.Mut.mb.recalc)))
+group_meds <- data.frame(clinData %>% group_by(group2) %>% summarise(median=median(TMB.Mut.mb.recalc)))
 panel_bg$median <- sapply(panel_bg$group2,FUN=function(x){group_meds[group_meds$group2==x,'median']})
 
-mutCoordsHM <- tmb[,c('Tumor_Sample_Barcode','Has.explanatory.mutations','TMB.Mut.mb.recalc')]
+mutCoordsHM <- clinData[,c('Tumor_Sample_Barcode','Has.explanatory.mutations','TMB.Mut.mb.recalc')]
 mutCoordsHM$Has.explanatory.mutations <- sapply(as.character(mutCoordsHM$Has.explanatory.mutations),FUN=function(x){ifelse(x=='No','',x)})
-mutCoordsHM$xcord <- sapply(as.character(mutCoordsHM$Tumor_Sample_Barcode),FUN=function(x){(1:nrow(tmb))[sample_order==x]})
+mutCoordsHM$xcord <- sapply(as.character(mutCoordsHM$Tumor_Sample_Barcode),FUN=function(x){(1:nrow(clinData))[sample_order==x]})
 seg_df <- data.frame(xs=c(225),xe=c(210),ys=c(0.025),ye=c(0.2674863))
 
 
@@ -63,54 +63,53 @@ genePathways <- setNames(c('Transcriptional Regulator','Cell Cycle/Apoptosis','C
                                 'BS_E9YW2KHS','BS_NVJJJ7MT','BS_CQC29CK5','BS_MYVQ8YDT','BS_H0MVFRCE','BS_DGV11G69','BS_QZAV7XVF','BS_2R0QBATZ','BS_31MQXA1J','BS_CGGJZ5Q1','BS_BVAVPKKN',
                                 'BS_X2D8S1HY','BS_SYQG48V0','BS_CPGZYTHM','BS_MMCZHZE6','BS_1G3QX306','BS_B5MDTA3Q')
 )
-tmb$pathGenePathway = sapply(as.character(tmb$Tumor_Sample_Barcode),FUN=function(x){genePathways[x]},USE.NAMES=FALSE)
-tmb$pathGenePathway = sapply(tmb$pathGenePathway,FUN=function(x){ifelse(is.na(x),'None',x)})
-tmb$pathGenePathway <- factor(tmb$pathGenePathway,levels = c("ALK","Transcriptional Regulator","Cell Cycle/Apoptosis","Chromatin/epigenome maintence","Hypermutant gene",
-                                                             "Major cell signaling","Unknown Function","Cell Metabolism",
-                                                             "None"))
+clinData$pathGenePathway = sapply(as.character(clinData$Tumor_Sample_Barcode),FUN=function(x){genePathways[x]},USE.NAMES=FALSE)
+clinData$pathGenePathway = sapply(clinData$pathGenePathway,FUN=function(x){ifelse(is.na(x),'None',x)})
+pathGeneLevels = c("ALK","Transcriptional Regulator","Cell Cycle/Apoptosis","Chromatin/epigenome maintence","Hypermutant gene",
+                   "Major cell signaling","Unknown Function","Cell Metabolism",
+                   "None")
+clinData$pathGenePathway <- factor(clinData$pathGenePathway,levels = pathGeneLevels)
 #scale size based on pathogenic mutation
-tmb$size = sapply(as.character(tmb$pathGenePathway),FUN=function(x) {ifelse(x=='None','small','big')},USE.NAMES=FALSE)
+clinData$size = sapply(as.character(clinData$pathGenePathway),FUN=function(x) {ifelse(x=='None','small','big')},USE.NAMES=FALSE)
 
+#set palette levels
+allFills = c("#F4CAE4","#FFF2AE","#CBD5E8","springgreen4","#E6F5C9","#A65628","#CBD5E8","#CBD5E8","#F4CAE4","#F4CAE4","#F4CAE4","#E1E1E1","#F4CAE4","#F4CAE4")
+#background
 bg_fills <- brewer.pal(8,'Pastel2')[c(4,6,3,7,5)]
 bg_fills[4] <- 'springgreen4'
 ptFills <- brewer.pal(9,'Set1')
 allFills = c(bg_fills,ptFills)
+##last level is no mutation
 allFills[length(allFills)] = '#E1E1E1'
-mutpermbplot <- ggplot() + #geom_point(data=tmb,alpha=0.5,aes(y=TMB.Mut.mb.,x=xcord,color=pathGenePathway),size=4) + theme_classic() + 
-  geom_point(data=tmb,alpha=0.75,aes(y=TMB.Mut.mb.recalc,x=xcord,fill=pathGenePathway,size=size),col='gray10',shape=21) + theme_classic() + 
+#map colors
+names(allFills) = c(levels(panel_bg$group2),levels(clinData$pathGenePathway))
+
+
+
+#make plot
+mutpermbplot <- ggplot() + #geom_point(data=clinData,alpha=0.5,aes(y=TMB.Mut.mb.,x=xcord,color=pathGenePathway),size=4) + theme_classic() + 
+  geom_point(data=clinData,alpha=0.75,aes(y=TMB.Mut.mb.recalc,x=xcord,fill=pathGenePathway,size=size),col='gray10',shape=21) + theme_classic() + 
   scale_size_manual(values=c(6,4),guide='none') +
   theme(axis.text.x=element_blank(),axis.ticks.x=element_blank(),axis.title.x=element_blank()) + 
   theme(axis.text.y=element_text(size=20),axis.title.y=element_text(size=18,margin=margin(t=0,r=25,b=0,l=0),angle=0)) +
-  geom_hline(yintercept=median(tmb$TMB.Mut.mb.recalc),linetype="dashed",color="gray40",size=1,alpha=0.5) + 
+  geom_hline(yintercept=median(clinData$TMB.Mut.mb.recalc),linetype="dashed",color="gray40",size=1,alpha=0.5) + 
   geom_hline(yintercept=2,linetype="dashed",color="gray40",size=1,alpha=0.5) +
   geom_hline(yintercept=10,linetype="dashed",color="gray40",size=1,alpha=0.5) +
-  annotate(geom="text",x=300,y=0.22,label="Median mutations/MB",color="gray30",size=5) +
+  annotate(geom="text",x=300,y=0.15,label="Median mutations/MB",color="gray30",size=5) +
   annotate(geom="text",x=300,y=2.45,label="Pediatric High",color="gray30",size=5) +
   annotate(geom="text",x=300,y=13,label="Hypermutated",color="gray30",size=5) +
   ylab('Mutations per MB') +
   theme(axis.line.x=element_blank()) + 
   geom_rect(data=panel_bg,aes(fill=group2),xmin=panel_bg$start-0.5,xmax=panel_bg$end+0.5,ymin=-Inf,ymax=+Inf,alpha=0.25) + 
-  scale_fill_manual(values=allFills,breaks = c('High Risk,MYCN-amplified','High Risk,Non-Amplified','Intermediate Risk','Low Risk,MYCN-Amplified',
-                                               'Low Risk,Non-Amplified',"ALK","Transcriptional Regulator","Cell Cycle/Apoptosis","Chromatin/epigenome maintence","Hypermutant gene",
-                                               "Major cell signaling","Unknown Function","Cell Metabolism",
-                                               "None")) + ##### COLOR SCALES ####
-geom_label(data=panel_bg,aes(fill=group2,x=label_pos,y=0.02,label=label_graph),size=5,colour='gray30',fontface='bold',angle=90,show.legend=FALSE) +
+  geom_label(data=panel_bg,aes(fill=group2,x=label_pos,y=0.02,label=label_graph),size=5,colour='gray30',fontface='bold',angle=90,show.legend=FALSE) +
   geom_segment(data=panel_bg,aes(x=start-0.5,y=median,xend=end+0.5,yend=median,color=group2),size=2.5,alpha=0.75) +
-  #
-  #geom_segment(data=panel_bg,aes(x=start-0.5,y=median,xend=end+0.5,yend=median,color='black'),size=10,alpha=0.75) +
-  scale_color_manual(values=allFills,breaks = c('High Risk,MYCN-amplified','High Risk,Non-Amplified','Intermediate Risk','Low Risk,MYCN-Amplified',
-                                                'Low Risk,Non-Amplified',"ALK","Transcriptional Regulator","Cell Cycle/Apoptosis","Chromatin/epigenome maintence","Hypermutant gene",
-                                                "Major cell signaling","Unknown Function","Cell Metabolism",
-                                                "None"),guide='none') +
-  #geom_text(data=mutCoordsHM,aes(x=xcord+14,y=(TMB.Mut.mb.)*1.15,label=Has.explanatory.mutations),color="magenta2",size=4.5) + 
   scale_y_continuous(limits=c(0.01,115),trans='log10',expand=c(0,0),breaks=c(0.01,0.1,1.0,10,100),labels=c(0.01,0.1,1.0,10,100)) + 
-  scale_x_continuous(limits=c(0,nrow(tmb)+1),expand=c(0,0)) + 
+  scale_x_continuous(limits=c(0,nrow(clinData)+1),expand=c(0,0)) + 
   geom_segment(data=seg_df,aes(x=xs,xend=xe,y=ys,yend=ye),colour='darkgreen') +
-  theme(legend.position="none")
-#geom_text(data=tmb_muts,aes(x=xshift,y=yshift,label=gPlot),check_overlap=FALSE,size=4,color='dodgerblue4')
+  theme(legend.position="none") + 
+  scale_fill_manual(values=allFills,breaks = c(levels(panel_bg$group2),levels(clinData$pathGenePathway))) + 
+  scale_color_manual(values=allFills,breaks = c(levels(panel_bg$group2),levels(clinData$pathGenePathway)))
 mutpermbplot
-
-
 
 ##########################################################################################################
 ##########################################################################################################
@@ -118,7 +117,7 @@ mutpermbplot
 #* add in mutation signatures/tumor purity/MES-ADRN plot
 ## read in mutsig cluster data
 msigc = read.table(paste0(workdir,'mutsig_cluster_results.tsv'),stringsAsFactors=FALSE,header=TRUE,row.names=NULL)
-tmb$mutsigcluster = sapply(tmb$Tumor_Sample_Barcode,FUN=function(x){msigc[msigc$sample_id==x,'cluster']})
+clinData$mutsigcluster = sapply(clinData$Tumor_Sample_Barcode,FUN=function(x){msigc[msigc$sample_id==x,'cluster']})
 #import mes/adrn scores
 maDF = read.table(paste0(workdir,'mes_adrn_scores.tsv'),sep='\t',stringsAsFactors=FALSE,header=TRUE,row.names=NULL)
 maDF = maDF[,c('SAMPLE','CLASS')]
@@ -130,13 +129,13 @@ purDF = read.table(paste0(workdir,'tumor_purity_results.tsv'),sep='\t',stringsAs
 purDF = purDF[purDF$case_id %in% unique(gDF$case_id),]
 #join data
 pDF = rbind(maDF,purDF)
-#remove samples not in tmb table
+#remove samples not in clinData table
 allSamp = unique(pDF$case_id)
-toRemove = allSamp[!(allSamp %in% tmb$case_id)]
+toRemove = allSamp[!(allSamp %in% clinData$case_id)]
 pDF <- pDF %>% filter(!(case_id %in% toRemove))
 #get samples with no RNA data
 swRNA = unique(pDF$case_id)
-swoRNA = tmb$case_id[!(tmb$case_id %in% swRNA)]
+swoRNA = clinData$case_id[!(clinData$case_id %in% swRNA)]
 #add samples with no data
 for (s in swoRNA) {
   for (g in c('purity','mes-adrn')) {
@@ -144,7 +143,7 @@ for (s in swoRNA) {
   }
 }
 #add in cluster data
-pDF = rbind(pDF,data.frame(case_id=tmb[,'case_id'],feature=sapply(tmb$mutsigcluster,FUN=function(x){paste0('Cluster ',x+1)})))
+pDF = rbind(pDF,data.frame(case_id=clinData[,'case_id'],feature=sapply(clinData$mutsigcluster,FUN=function(x){paste0('Cluster ',x+1)})))
 #add y-value for plotting
 pDF$val = rep(1,nrow(pDF))
 #set factor order
@@ -159,7 +158,7 @@ pal = c("gray40","white","#E3EEF8","#CFE1F2","#B5D4E9","#93C4DE","#6BAED6","#4A9
 pal = c(pal,'#E4BF47','#F3DD93','#EEADFF','#D424FF','gray40') #colors for mes-adrn status
 pal = c(pal,brewer.pal(8,'Set1'))
 #set xvalue for each sample
-xDict = setNames(tmb$xcord,nm=tmb$case_id)
+xDict = setNames(clinData$xcord,nm=clinData$case_id)
 pDF$xcord = sapply(pDF$case_id,FUN=function(x){xDict[[x]]})
 
 mPlot <- ggplot(data=pDF,aes(x=xcord,y=val,fill=feature)) + geom_bar(stat='identity',width=1) + 
@@ -262,10 +261,10 @@ gp$vp <- viewport(width = unit(fig_size[1], "in") - margin, height=unit(fig_size
 grid.draw(gp)
 
 #### make boxplots of mut burden by cluster
-tmb$mutsigcluster = tmb$mutsigcluster + 1
-tmb$mutsigcluster = factor(tmb$mutsigcluster,levels=1:8)
-tmb$TMB.Mut.mb.recalc_noZero = sapply(tmb$TMB.Mut.mb.recalc,FUN=function(x){ifelse(x==0,0.01,x)})
-mclustboxplot <- ggplot(data=tmb) + geom_boxplot(aes(x=mutsigcluster,y=TMB.Mut.mb.recalc_noZero)) + theme_bw() + theme(axis.title.x=element_blank()) + 
+clinData$mutsigcluster = clinData$mutsigcluster + 1
+clinData$mutsigcluster = factor(clinData$mutsigcluster,levels=1:8)
+clinData$TMB.Mut.mb.recalc_noZero = sapply(clinData$TMB.Mut.mb.recalc,FUN=function(x){ifelse(x==0,0.01,x)})
+mclustboxplot <- ggplot(data=clinData) + geom_boxplot(aes(x=mutsigcluster,y=TMB.Mut.mb.recalc_noZero)) + theme_bw() + theme(axis.title.x=element_blank()) + 
   facet_grid(cols=vars(mutsigcluster),scales='free') + theme(strip.text.x = element_text(size = 20)) +
   theme(axis.text.x=element_blank()) + ylab('Tumor Mutation Burden')  +
   scale_y_continuous(trans='log10') + theme(axis.text.y=element_text(size=22)) + 
