@@ -72,8 +72,7 @@ clinData$pathGenePathway <- factor(clinData$pathGenePathway,levels = pathGeneLev
 #scale size based on pathogenic mutation
 clinData$size = sapply(as.character(clinData$pathGenePathway),FUN=function(x) {ifelse(x=='None','small','big')},USE.NAMES=FALSE)
 
-#set palette levels
-allFills = c("#F4CAE4","#FFF2AE","#CBD5E8","springgreen4","#E6F5C9","#A65628","#CBD5E8","#CBD5E8","#F4CAE4","#F4CAE4","#F4CAE4","#E1E1E1","#F4CAE4","#F4CAE4")
+##set palette
 #background
 bg_fills <- brewer.pal(8,'Pastel2')[c(4,6,3,7,5)]
 bg_fills[4] <- 'springgreen4'
