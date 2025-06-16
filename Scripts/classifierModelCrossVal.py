@@ -382,7 +382,7 @@ for name,setting in [('0.1,250,4',{'learning_rate': 0.1,'n_estimators':250,'max_
     param_rec_2[name] = avg_rec  
     param_f1_2[name] = avg_f1
 
-    #%% Find best parameters for logistic regression
+#%% Find best parameters for logistic regression
 #scale the data using standard scaler
 std_scaler = preprocessing.StandardScaler()
 train_scaled = std_scaler.fit_transform(train.drop(['call'],axis=1))
@@ -406,7 +406,7 @@ solver = 'lbfgs' for l2 and 'saga' for l1/enet
 '''
 
 params = {'penalty':'l2','dual':False,'tol':0.0001,'C':1.0,'fit_intercept':True,'intercept_scaling':1,'class_weight':None,'random_state':None,'solver':'lbfgs',
-          'max_iter':5000,'multi_class':'auto','verbose':0,'warm_start':False,'n_jobs':4,'l1_ratio':None}
+          'max_iter':5000,'multi_class':'multinomail','verbose':0,'warm_start':False,'n_jobs':4}
 
 #test parameters in k-fold cross-validation
 param_acc_lr = {}
