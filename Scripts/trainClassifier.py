@@ -247,7 +247,6 @@ print('\nCross validation classification report\n')
 print(sklearn.metrics.classification_report(y_train, predicted_transformed))
 
 #ROC for three classes using RELU/3/50
-
 def create_roc_curve(Y, probabilities, class_lookup, title, ax):
     '''Create ROC curve to compare multiclass model performance.
 
