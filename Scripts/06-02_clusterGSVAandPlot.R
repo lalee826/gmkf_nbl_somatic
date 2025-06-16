@@ -301,7 +301,7 @@ for (c in unique(pdfHRM$case_id)) {
 ## perform heirarchical clustering for each clinical group
 #make sure data is numeric
 clustLR = mutate_all(pdfLRfeatData[,2:ncol(pdfLRfeatData)], function(x) {as.numeric(as.character(x))})
-clustIR = mutate_all(pdfIRfeatData[,2:ncol(pdfIRfeatData)], function(x) {as.numeric(as.character(x)))
+clustIR = mutate_all(pdfIRfeatData[,2:ncol(pdfIRfeatData)], function(x) {as.numeric(as.character(x))})
 clustHRN = mutate_all(pdfHRNfeatData[,2:ncol(pdfHRNfeatData)], function(x) {as.numeric(as.character(x))})
 clustHRM = mutate_all(pdfHRMfeatData[,2:ncol(pdfHRMfeatData)], function(x) {as.numeric(as.character(x))})
 rownames(clustLR) = pdfLRfeatData$case_id
