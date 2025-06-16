@@ -117,7 +117,9 @@ RUN pip3 install \
     https://github.com/termcolor/termcolor/archive/refs/tags/1.1.0.zip \
     git+https://github.com/serge-sans-paille/gast.git@0.2.2 \
     tensorflow==1.15.0 \
+    plotly==4.8.1 \
     jupyterlab ipykernel
+
 
 #Additional R packages
 RUN R -e "install.packages('https://cran.r-project.org/src/contrib/Archive/lattice/lattice_0.20-38.tar.gz', repos=NULL, type='source')" \
@@ -148,3 +150,6 @@ RUN echo "rstudio:rstudio" | chpasswd
 
 #start services
 CMD ["/usr/local/bin/start_services.sh"]
+
+#clone github repo
+RUN git clone https://www.github.com/lalee826/gmkf_nbl_somatic
