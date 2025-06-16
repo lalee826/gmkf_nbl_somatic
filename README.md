@@ -22,7 +22,7 @@ After installation, navigate to the directory where the Dockerfile and helper sh
 
  Alternatively, you can pull the docker image from dockerhub 
 
- <code> docker pull laleeupenn/gmkf:latest <code> 
+ <code> docker pull laleeupenn/gmkf:latest </code> 
 
 Once completed, open a Docker container with port 8787 allowing usage of rstudio and port 8888 allowing jupyter notebook  
  
