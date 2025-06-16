@@ -140,7 +140,7 @@ for n in [10,50,100,500,1000]:
     fold_rec[n] = avg_rec  
     fold_f1[n] = avg_f1    
 
-    #%%test best params for RBM kernel SVM model
+#%%test best params for RBM kernel SVM model
 #scale the data using standard scaler
 std_scaler = preprocessing.StandardScaler()
 train_scaled = std_scaler.fit_transform(train.drop(['call'],axis=1))
@@ -218,7 +218,7 @@ for c in [0.000001,0.00001,0.0001,0.001,0.01,0.1,1,10,100]:
     
     print(avg_acc)
 
-    #%% find best params for gradient boosting classifier
+#%% find best params for gradient boosting classifier
 Y = train.call.replace({'a':0,'f':1,'s':2}).astype(int)
 #X = train.drop(['call'],axis=1).astype(float).values #get features
 X = train_unscaled
@@ -239,7 +239,7 @@ d = 3
 
 params = {'learning_rate':0.1,'n_estimators':100,'max_depth':3,'loss':'deviance','subsample':1.0,'min_samples_split':2,
                                  'min_samples_leaf':1,'min_weight_fraction_leaf':0.0,'min_impurity_decrease':0.0,
-                                 'verbose':0,'max_leaf_nodes':None,'validation_fraction':0.1}
+                                 'verbose':0,'max_leaf_nodes':None}
 #test parameters in k-fold cross-validation
 param_acc = {}
 param_prec = {}
