@@ -111,7 +111,7 @@ RUN pip3 install jupyterlab ipykernel
 RUN pip3 install \
     --only-binary :all: numpy==1.16.6 \
     --only-binary :all: scipy==1.1.0 \
-    --only-binary :all: scikit-learn==0.19.2 \
+    --only-binary :all: scikit-learn==0.21.3 \
     pandas==0.25.3 \
     matplotlib==2.2.5 \
     https://github.com/termcolor/termcolor/archive/refs/tags/1.1.0.zip \
