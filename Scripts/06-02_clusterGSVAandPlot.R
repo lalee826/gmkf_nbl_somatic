@@ -281,7 +281,6 @@ for (c in unique(pdfHRN$case_id)) {
 for (c in unique(pdfHRM$case_id)) {
   fVals = c(c)
   for (g in geneFeatures) {
-    print(g)
     f = gDF %>% filter(case_id == c & gene_name == g) %>% pull(feature)
     f1 = strsplit(f,split='[.]')[[1]]
     if (f1[2] == 'ZERO') {
@@ -292,7 +291,6 @@ for (c in unique(pdfHRM$case_id)) {
       fval = as.numeric(f1[3])
       ff = ifelse(f1[2]=='POS',fval,fval*(-1))
     }
-    print(ff)
     fVals = c(fVals,ff)
   }
   fvdf = t(as.data.frame(fVals,col.names=NULL,row.names=c('case_id',geneFeatures)))
