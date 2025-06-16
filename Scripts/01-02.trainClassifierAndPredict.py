@@ -283,3 +283,7 @@ class_lookup = {0: 'Ambiguous', 1: 'Fail', 2: 'Somatic'}
 fig, ax = plt.subplots()
 create_roc_curve(y_train, probabilities, class_lookup, 'Three Class Reciever '
                 'Operating Characteristic Curve',ax)
+
+
+#output the final count of labels on our test data set
+predCounts = data_scaled.groupby('classification').size()
