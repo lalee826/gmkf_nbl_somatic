@@ -117,3 +117,6 @@ ldf = pd.DataFrame({'sample_id':d.index.values,'cluster':labels})
 ldf['cluster'] = [x+1 for x in ldf.cluster.tolist()]
 #these cluster assignments are used in implementation of figure 4
 #a results file is already provided in the Data folder
+
+#%%get final counts in each cluster
+finCounts = ldf.groupby('cluster').count()['sample_id'].to_numpy()
