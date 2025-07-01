@@ -83,6 +83,7 @@ fold_acc = {}
 fold_prec = {}
 fold_rec = {}
 fold_f1 = {}
+cores = 4 #parallel jobs
 
 #%% test best parameters for random forest
 for n in [100]:
