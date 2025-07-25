@@ -83,7 +83,7 @@ fold_acc = {}
 fold_prec = {}
 fold_rec = {}
 fold_f1 = {}
-cores = 4 #parallel jobs
+cores = 4 #parallele jobs
 
 #%% test best parameters for random forest
 for n in [10,50,100,500,1000]:
@@ -399,7 +399,7 @@ x_train,x_test,y_train,y_test = train_test_split(X,Y,test_size=0.1,random_state=
 #set cross-validation params
 kfold = KFold(n_splits=5,shuffle=True,random_state=seed)
 
-
+###test l1 and l2 regression
 ''' default settings
 penalty = l2
 C = 1
@@ -425,8 +425,71 @@ for name,setting in [('lasso-0.001',{'penalty':'l1','C':0.001,'solver':'saga'}),
                      ('ridge-0.1',{'penalty':'l2','C':0.1,'solver':'lbfgs'}),
                      ('ridge-1',{'penalty':'l2','C':1,'solver':'lbfgs'}),
                      ('ridge-10',{'penalty':'l2','C':10,'solver':'lbfgs'}),
-                     ('ridge-100',{'penalty':'l2','C':100,'solver':'lbfgs'}),
-                     ('elnet-0.001',{'penalty':'elasticnet','C':0.001,'solver':'saga'}),
+                     ('ridge-100',{'penalty':'l2','C':100,'solver':'lbfgs'})]:
+
+    #update the model parameters
+    params.update(setting)
+    print(name,params)
+
+    #init model
+    lrm = LogisticRegression(**params)
+
+    #cross-validation
+    cv_acc = []
+    cv_prec = {'a':[],'f':[],'s':[]}
+    cv_rec = {'a':[],'f':[],'s':[]}
+    cv_f1 = {'a':[],'f':[],'s':[]}
+    for trainix,testix in kfold.split(X=X,y=Y):
+        
+        #split into train,test sets
+        x_train = X[trainix]
+        y_train = Y.iloc[trainix]
+        x_test = X[testix]
+        y_test = Y.iloc[testix]
+        
+        #fit model and predict
+        lrm.fit(x_train,y_train)
+        pred_labels = lrm.predict(x_test)
+        
+        #assess performance
+        acc = round(metrics.accuracy_score(y_test, pred_labels),2)
+        ps = metrics.precision_score(y_test,pred_labels,average=None)
+        rs = metrics.recall_score(y_test,pred_labels,average=None)
+        fs = metrics.f1_score(y_test,pred_labels,average=None)
+    
+        #save values
+        cv_acc.append(acc)
+        cv_prec['a'] = cv_prec['a'] + [round(ps[0],2)]
+        cv_prec['f'] = cv_prec['f'] + [round(ps[1],2)]
+        cv_prec['s'] = cv_prec['s'] + [round(ps[2],2)]
+        cv_rec['a'] = cv_rec['a'] + [round(rs[0],2)]
+        cv_rec['f'] = cv_rec['f'] + [round(rs[1],2)]
+        cv_rec['s'] = cv_rec['s'] + [round(rs[2],2)]
+        cv_f1['a'] = cv_f1['a'] + [round(fs[0],2)]
+        cv_f1['f'] = cv_f1['f'] + [round(fs[1],2)]
+        cv_f1['s'] = cv_f1['s'] + [round(fs[2],2)]
+        
+    #get average cross-train scores
+    avg_acc = round(np.mean(cv_acc),2)
+    avg_prec = {'a':round(np.mean(cv_prec['a']),2),'f':round(np.mean(cv_prec['f']),2),'s':round(np.mean(cv_prec['s']),2)}
+    avg_rec = {'a':round(np.mean(cv_rec['a']),2),'f':round(np.mean(cv_rec['f']),2),'s':round(np.mean(cv_rec['s']),2)}
+    avg_f1 = {'a':round(np.mean(cv_f1['a']),2),'f':round(np.mean(cv_f1['f']),2),'s':round(np.mean(cv_f1['s']),2)}
+    #save cross-train scores for iteration
+    param_acc_lr[name] = avg_acc
+    param_prec_lr[name] = avg_prec
+    param_rec_lr[name] = avg_rec  
+    param_f1_lr[name] = avg_f1
+
+###test el-net regression
+params = {'penalty':'l2','dual':False,'tol':0.0001,'C':1.0,'fit_intercept':True,'intercept_scaling':1,'class_weight':None,'random_state':None,'solver':'lbfgs',
+          'max_iter':5000,'multi_class':'auto','verbose':0,'warm_start':False,'n_jobs':4,'l1_ratio':0}
+
+#test parameters in k-fold cross-validation
+param_acc_lr = {}
+param_prec_lr = {}
+param_rec_lr = {}
+param_f1_lr = {}
+for name,setting in [('elnet-0.001',{'penalty':'elasticnet','C':0.001,'solver':'saga'}),
                      ('elnet-0.01',{'penalty':'elasticnet','C':0.01,'solver':'saga'}),
                      ('elnet-0.1',{'penalty':'elasticnet','C':0.1,'solver':'saga'}),
                      ('elnet-1',{'penalty':'elasticnet','C':1,'solver':'saga'}),
@@ -485,10 +548,11 @@ for name,setting in [('lasso-0.001',{'penalty':'l1','C':0.001,'solver':'saga'}),
     param_prec_lr[name] = avg_prec
     param_rec_lr[name] = avg_rec  
     param_f1_lr[name] = avg_f1
-    
+
+
 #test parameters in elnet k-fold cross-validation
 params = {'penalty':'l2','dual':False,'tol':0.0001,'C':1.0,'fit_intercept':True,'intercept_scaling':1,'class_weight':None,'random_state':None,'solver':'lbfgs',
-      'max_iter':5000,'multi_class':'auto','verbose':0,'warm_start':False,'n_jobs':4,'l1_ratio':None}
+      'max_iter':5000,'multi_class':'auto','verbose':0,'warm_start':False,'n_jobs':4,'l1_ratio':0}
 param_acc_lr_enet = {}
 param_prec_lr_enet = {}
 param_rec_lr_enet = {}
@@ -559,7 +623,7 @@ for name,setting in [('elnet-0.01-0.25',{'penalty':'elasticnet','C':0.01,'solver
     param_rec_lr_enet[name] = avg_rec  
     param_f1_lr_enet[name] = avg_f1
 
-    ### results of model cross-validations
+### results of model cross-validations
 
 #RF
 '''
