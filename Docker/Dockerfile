@@ -102,7 +102,8 @@ RUN R -e "install.packages('https://cran.r-project.org/src/contrib/Archive/devto
 #install pip for python 3 and other dependencies
 RUN apt-get update && apt-get install -y \
     python3-pip \
-    libffi-dev
+    libffi-dev \
+    python3-tk
 RUN python3 -m pip install --upgrade pip setuptools wheel
 #Install JupyterLab
 RUN pip3 install jupyterlab ipykernel
