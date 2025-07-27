@@ -119,6 +119,7 @@ RUN pip3 install \
     git+https://github.com/serge-sans-paille/gast.git@0.2.2 \
     tensorflow==1.15.0 \
     plotly==4.8.1 \
+    xgboost==1.1.1 \
     jupyterlab ipykernel
 
 
