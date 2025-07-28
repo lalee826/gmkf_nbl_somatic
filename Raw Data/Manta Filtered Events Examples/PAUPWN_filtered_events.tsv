@@ -1,0 +1,27 @@
+event	id_be1	id_be2	type	chrom_be1	pos_be1	chrom_be2	pos_be2	length	imprecise_be1	imprecise_be2	somatic_score	somatic_be1	somatic_be2	filter_be1	filter_be2	insertion_length	insertion_sequence	bnd_depth_be1	bnd_depth_be2	confidence_interval_end	cigar	homology_length_be1	homology_length_be2	homology_sequence_be1	homology_sequence_be2	tumor_alt_pe	tumor_alt_sr	tumor_ref_pe	tumor_ref_sr	normal_alt_pe	normal_alt_sr	normal_ref_pe	normal_ref_sr
+MantaBND:28:11123:11127:0:0:0:	MantaBND:28:11123:11127:0:0:0:0	MantaBND:28:11123:11127:0:0:0:1	BND	chr1	77367816	chr11	96561919		True	True	32	True	True	PASS	PASS			97.0	23.0							5		10		0		17	
+MantaBND:399998:1:2:0:0:0:	MantaBND:399998:1:2:0:0:0:1	MantaBND:399998:1:2:0:0:0:0	BND	chr1	100332350	chr5	6632590		False	False	36	True	True	PASS	PASS			49.0	42.0			7.0	7.0	GGGAGGG	CTCCCTA	3	3.0	47	57.0	0	0.0	25	59.0
+MantaDEL:766759:1:2:0:0:	MantaDEL:766759:1:2:0:0:0		DEL	chr1	124794879	chr1	124802572	7693.0	True	True	35	True	True	PASS						-154,155						7		16		0		16	
+MantaBND:22170:2:3:0:0:0:	MantaBND:22170:2:3:0:0:0:1	MantaBND:22170:2:3:0:0:0:0	BND	chr2	11789651	chr4	161132516		True	True	42	True	True	PASS	PASS			38.0	39.0							8		41		0		19	
+MantaDEL:642437:0:1:0:0:	MantaDEL:642437:0:1:0:0:0		DEL	chr2	16225017	chr2	16226389	1372.0	True	True	40	True	True	PASS						-148,148						11		57		0		32	
+MantaBND:207050:1:2:0:0:0:	MantaBND:207050:1:2:0:0:0:0	MantaBND:207050:1:2:0:0:0:1	BND	chr2	106289486	chr17	78142981		True	True	36	True	True	PASS	PASS			43.0	33.0							7		82		0		20	
+MantaBND:16320:2:3:0:0:0:	MantaBND:16320:2:3:0:0:0:1	MantaBND:16320:2:3:0:0:0:0	BND	chr2	115938210	chrX	56385606		True	True	33	True	True	PASS	PASS			45.0	46.0							6		41		0		29	
+MantaBND:632516:0:4:0:0:0:	MantaBND:632516:0:4:0:0:0:1	MantaBND:632516:0:4:0:0:0:0	BND	chr2	134473375	chr3	183571470		True	True	30	True	True	PASS	PASS			28.0	30.0							5		41		0		20	
+MantaBND:155267:0:1:0:0:0:	MantaBND:155267:0:1:0:0:0:1	MantaBND:155267:0:1:0:0:0:0	BND	chr2	147155609	chr10	2025601		False	False	36	True	True	PASS	PASS			42.0	37.0			5.0	5.0	ATATA	TATAT	0	5.0	48	77.0	0	0.0	26	54.0
+MantaBND:28:34633:34634:0:0:0:	MantaBND:28:34633:34634:0:0:0:0	MantaBND:28:34633:34634:0:0:0:1	BND	chr2	181374552	chr7	104430608		True	True	32	True	True	PASS	PASS			29.0	23.0							7		34		0		11	
+MantaBND:98852:1:4:0:0:0:	MantaBND:98852:1:4:0:0:0:1	MantaBND:98852:1:4:0:0:0:0	BND	chr4	10038477	chr19	10714960		True	True	39	True	True	PASS	PASS			49.0	28.0							5		23		0		26	
+MantaBND:40238:1:3:0:7:0:	MantaBND:40238:1:3:0:7:0:0	MantaBND:40238:1:3:0:7:0:1	BND	chr4	24393019	chr21	28417258		False	False	42	True	True	PASS	PASS	1.0	A	27.0	40.0							1	6.0	23	14.0	0	1.0	22	5.0
+MantaBND:568505:0:1:0:0:0:	MantaBND:568505:0:1:0:0:0:1	MantaBND:568505:0:1:0:0:0:0	BND	chr4	135169360	chr9	94543384		True	True	44	True	True	PASS	PASS			46.0	17.0							7		40		0		25	
+MantaDEL:583410:1:2:1:0:	MantaDEL:583410:1:2:1:0:0		DEL	chr4	186432356	chr4	186436001	3645.0	True	True	32	True	True	PASS						-101,102						8		26		0		14	
+MantaINV:16516:1:2:1:0:	MantaINV:16516:1:2:1:0:0		INV	chr5	99395465	chr5	100369932	974467.0	True	True	44	True	True	PASS						-157,158						7		47		0		30	
+MantaBND:28:3722:22425:0:0:0:	MantaBND:28:3722:22425:0:0:0:0	MantaBND:28:3722:22425:0:0:0:1	BND	chr6	36035740	chr7	125238951		True	True	49	True	True	PASS	PASS			37.0	36.0							7		31		0		30	
+MantaBND:73470:0:4:0:0:0:	MantaBND:73470:0:4:0:0:0:0	MantaBND:73470:0:4:0:0:0:1	BND	chr6	89872256	chr12	6437251		True	True	32	True	True	PASS	PASS			53.0	44.0							6		44		0		30	
+MantaDEL:34647:126:128:5:0:	MantaDEL:34647:126:128:5:0:0		DEL	chr7	142501879	chr7	142521953	20074.0	True	True	42	True	True	PASS						-313,314						11		104		0		31	
+MantaBND:153734:1:2:0:0:0:	MantaBND:153734:1:2:0:0:0:0	MantaBND:153734:1:2:0:0:0:1	BND	chr8	3241883	chr11	131258051		True	True	38	True	True	PASS	PASS			36.0	43.0							6		39		0		20	
+MantaINV:757071:2:6:0:0:	MantaINV:757071:2:6:0:0:0		INV	chr8	59457457	chr8	59465772	8315.0	True	True	33	True	True	PASS						-165,165						7		36		0		14	
+MantaBND:165526:11:12:2:0:0:	MantaBND:165526:11:12:2:0:0:1	MantaBND:165526:11:12:2:0:0:0	BND	chr10	37145750	chr18	14780860		True	True	60	True	True	PASS	PASS			58.0	46.0							9		39		0		33	
+MantaBND:136612:0:1:0:0:0:	MantaBND:136612:0:1:0:0:0:1	MantaBND:136612:0:1:0:0:0:0	BND	chr11	69206777	chr18	10063085		True	True	46	True	True	PASS	PASS			54.0	36.0							7		50		0		39	
+MantaDEL:276989:0:1:0:0:	MantaDEL:276989:0:1:0:0:0		DEL	chr14	73540435	chr14	73572251	31816.0	True	True	38	True	True	PASS						-173,174						6		17		0		16	
+MantaDEL:285329:0:0:3:3:	MantaDEL:285329:0:0:3:3:1		DEL	chr14	104289145	chr14	104289219	74.0	False	True	31	True	True	PASS							1M74D	4.0		TGTG		0	7.0	12	43.0	0	1.0	18	46.0
+MantaDEL:210865:0:1:1:0:	MantaDEL:210865:0:1:1:0:0		DEL	chr17	56872580	chr17	56874864	2284.0	True	True	32	True	True	PASS						-138,139						9		57		0		23	
+MantaDUP:TANDEM:318060:0:0:7:0:	MantaDUP:TANDEM:318060:0:0:7:0:0		DUP	chr18	58550147	chr18	58550673	526.0	True	True	31	True	True	PASS						-196,197						8		56		0		23	

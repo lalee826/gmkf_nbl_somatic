@@ -1,0 +1,11 @@
+event	id_be1	id_be2	type	chrom_be1	pos_be1	chrom_be2	pos_be2	length	imprecise_be1	imprecise_be2	somatic_score	somatic_be1	somatic_be2	filter_be1	filter_be2	insertion_length	insertion_sequence	bnd_depth_be1	bnd_depth_be2	confidence_interval_end	cigar	homology_length_be1	homology_length_be2	homology_sequence_be1	homology_sequence_be2	tumor_alt_pe	tumor_alt_sr	tumor_ref_pe	tumor_ref_sr	normal_alt_pe	normal_alt_sr	normal_ref_pe	normal_ref_sr
+MantaBND:384424:0:1:0:1:0:	MantaBND:384424:0:1:0:1:0:0	MantaBND:384424:0:1:0:1:0:1	BND	chr1	69916061	chr2	225181805		False	False	49	True	True	PASS	PASS	1.0	C	29.0	25.0							0	15.0	14	27.0	0	0.0	13	20.0
+MantaDEL:14:22213:32948:0:0:	MantaDEL:14:22213:32948:0:0:0		DEL	chr1	124984691	chr1	124989719	5028.0	True	True	38	True	True	PASS						-100,100						6		42		0		44	
+MantaBND:14:32450:32454:0:0:0:	MantaBND:14:32450:32454:0:0:0:0	MantaBND:14:32450:32454:0:0:0:1	BND	chr2	41379680	chr12	127153599		True	True	32	True	True	PASS	PASS			56.0	58.0							5		22		0		18	
+MantaBND:40059:1:2:0:0:0:	MantaBND:40059:1:2:0:0:0:0	MantaBND:40059:1:2:0:0:0:1	BND	chr5	4190668	chr8	100051425		True	True	34	True	True	PASS	PASS			5.0	31.0							6		24		0		13	
+MantaBND:171717:2:3:0:0:0:	MantaBND:171717:2:3:0:0:0:0	MantaBND:171717:2:3:0:0:0:1	BND	chr6	31373827	chr19	49941819		True	True	49	True	True	PASS	PASS			21.0	42.0							7		35		0		33	
+MantaBND:14:14847:14863:0:0:0:	MantaBND:14:14847:14863:0:0:0:0	MantaBND:14:14847:14863:0:0:0:1	BND	chr6	49282272	chr16	80949889		True	True	41	True	True	PASS	PASS			44.0	16.0							6		36		0		24	
+MantaDUP:TANDEM:161615:0:1:0:0:	MantaDUP:TANDEM:161615:0:1:0:0:0		DUP	chr14	92870157	chr14	92872010	1853.0	True	True	41	True	True	PASS						-149,150						7		30		0		34	
+MantaDEL:138350:0:1:0:0:	MantaDEL:138350:0:1:0:0:0		DEL	chr15	35238821	chr15	35243678	4857.0	True	True	31	True	True	PASS						-87,88						5		32		0		38	
+MantaDUP:TANDEM:128113:0:1:0:0:	MantaDUP:TANDEM:128113:0:1:0:0:0		DUP	chr16	37725594	chr16	37915660	190066.0	True	True	49	True	True	PASS						-172,172						8		51		0		42	
+MantaDUP:TANDEM:172282:0:2:0:0:	MantaDUP:TANDEM:172282:0:2:0:0:0		DUP	chr19	53433468	chr19	53470435	36967.0	True	True	34	True	True	PASS						-123,124						6		45		0		39	

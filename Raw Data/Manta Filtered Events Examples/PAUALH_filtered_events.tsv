@@ -1,0 +1,6 @@
+event	id_be1	id_be2	type	chrom_be1	pos_be1	chrom_be2	pos_be2	length	imprecise_be1	imprecise_be2	somatic_score	somatic_be1	somatic_be2	filter_be1	filter_be2	insertion_length	insertion_sequence	bnd_depth_be1	bnd_depth_be2	confidence_interval_end	cigar	homology_length_be1	homology_length_be2	homology_sequence_be1	homology_sequence_be2	tumor_alt_pe	tumor_alt_sr	tumor_ref_pe	tumor_ref_sr	normal_alt_pe	normal_alt_sr	normal_ref_pe	normal_ref_sr
+MantaBND:81296:1:2:0:0:0:	MantaBND:81296:1:2:0:0:0:0	MantaBND:81296:1:2:0:0:0:1	BND	chr1	17868595	chr11	68506313		True	True	52	True	True	PASS	PASS			23.0	36.0							8		28		0		29	
+MantaBND:430784:0:1:0:0:0:	MantaBND:430784:0:1:0:0:0:1	MantaBND:430784:0:1:0:0:0:0	BND	chr3	176223236	chr8	47252530		True	True	41	True	True	PASS	PASS			19.0	38.0							6		37		0		33	
+MantaDEL:359846:0:1:0:0:	MantaDEL:359846:0:1:0:0:0		DEL	chr4	2493625	chr4	2494000	375.0	False	True	41	True	True	PASS							1M375D	10.0		CCCAGCTACT		0	6.0	32	39.0	0	0.0	35	46.0
+MantaDUP:TANDEM:553964:0:1:0:0:	MantaDUP:TANDEM:553964:0:1:0:0:0		DUP	chr9	104492973	chr9	104493041	68.0	False	True	44	True	True	PASS						0,7		7.0		ATATATA		0	6.0	7	16.0	0	0.0	16	24.0
+MantaDUP:TANDEM:198639:0:2:0:0:	MantaDUP:TANDEM:198639:0:2:0:0:0		DUP	chr19	52819605	chr19	52856045	36440.0	True	True	56	True	True	PASS						-170,171						7		30		0		48	

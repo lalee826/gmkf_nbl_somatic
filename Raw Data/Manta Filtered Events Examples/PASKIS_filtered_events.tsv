@@ -1,0 +1,14 @@
+event	id_be1	id_be2	type	chrom_be1	pos_be1	chrom_be2	pos_be2	length	imprecise_be1	imprecise_be2	somatic_score	somatic_be1	somatic_be2	filter_be1	filter_be2	insertion_length	insertion_sequence	bnd_depth_be1	bnd_depth_be2	confidence_interval_end	cigar	homology_length_be1	homology_length_be2	homology_sequence_be1	homology_sequence_be2	tumor_alt_pe	tumor_alt_sr	tumor_ref_pe	tumor_ref_sr	normal_alt_pe	normal_alt_sr	normal_ref_pe	normal_ref_sr
+MantaBND:526754:0:1:0:0:0:	MantaBND:526754:0:1:0:0:0:0	MantaBND:526754:0:1:0:0:0:1	BND	chr1	45359372	chr2	55011672		False	False	146	True	True	PASS	PASS			91.0	76.0			1.0	1.0	A	C	22	13.0	35	62.0	0	0.0	45	119.0
+MantaDEL:614332:0:1:0:0:	MantaDEL:614332:0:1:0:0:0		DEL	chr1	243383223	chr1	243383282	59.0	False	True	51	True	True	PASS							1M59D	3.0		AAC		0	10.0	7	35.0	0	0.0	10	47.0
+MantaDUP:TANDEM:515939:0:1:0:0:	MantaDUP:TANDEM:515939:0:1:0:0:0		DUP	chr2	11455981	chr2	11823093	367112.0	False	True	61	True	True	PASS						0,3		3.0		CAG		8	11.0	96	101.0	0	0.0	70	110.0
+MantaINV:34:49768:49773:0:1:	MantaINV:34:49768:49773:0:1:0		INV	chr2	15413676	chr2	15565581	151905.0	False	True	32	True	True	PASS						-3,0		3.0		ACA		39	35.0	9491	12535.0	0	0.0	74	121.0
+MantaINV:34:49758:49783:0:0:	MantaINV:34:49758:49783:0:0:0		INV	chr2	15464084	chr2	16158065	693981.0	False	True	31	True	True	PASS						-1,0		1.0		A		31	34.0	9143	12780.0	0	0.0	45	88.0
+MantaINV:34:41016:49874:0:0:	MantaINV:34:41016:49874:0:0:0		INV	chr2	15697240	chr2	15859312	162072.0	False	True	31	True	True	PASS		14.0	GCCTCATTGGCCTC									18	14.0	8794	11907.0	0	0.0	67	111.0
+MantaINV:34:49934:49935:0:1:	MantaINV:34:49934:49935:0:1:0		INV	chr2	15850440	chr2	15987502	137062.0	False	True	38	True	True	PASS		2.0	GT									182	171.0	8960	11656.0	0	0.0	71	105.0
+MantaDEL:34:49874:49940:0:2:	MantaDEL:34:49874:49940:0:2:0		DEL	chr2	15859289	chr2	16350024	490735.0	False	True	30	True	True	PASS												15	13.0	9283	12577.0	0	0.0	48	108.0
+MantaDUP:TANDEM:34:49771:49967:2:0:	MantaDUP:TANDEM:34:49771:49967:2:0:0		DUP	chr2	15947278	chr2	16612755	665477.0	False	True	31	True	True	PASS						0,3		3.0		AGC		14	20.0	8747	11907.0	0	0.0	62	97.0
+MantaDEL:34:10176:50115:1:2:	MantaDEL:34:10176:50115:1:2:0		DEL	chr2	16200920	chr2	16664391	463471.0	False	True	31	True	True	PASS						0,3		3.0		GAC		20	16.0	7963	11567.0	0	0.0	88	134.0
+MantaDEL:508499:0:1:0:0:	MantaDEL:508499:0:1:0:0:0		DEL	chr3	180275481	chr3	180275853	372.0	False	True	91	True	True	PASS							1M372D					10	17.0	38	42.0	0	0.0	76	100.0
+MantaDUP:TANDEM:34:40129:40181:0:0:	MantaDUP:TANDEM:34:40129:40181:0:0:0		DUP	chr5	49749136	chr5	49833034	83898.0	True	True	35	True	True	PASS						-187,187						6		34		0		22	
+MantaDUP:TANDEM:182243:0:1:0:0:	MantaDUP:TANDEM:182243:0:1:0:0:0		DUP	chr16	46986341	chr16	46995867	9526.0	False	True	119	True	True	PASS						0,2		2.0		GT		17	15.0	52	73.0	0	0.0	75	111.0
