@@ -137,7 +137,10 @@ RUN R -e "install.packages('https://cran.r-project.org/src/contrib/Archive/latti
  && R -e "install.packages('maxstat', dependencies=TRUE, repos='http://cran.rstudio.com/')" \
  && R -e "install.packages('survMisc', dependencies=TRUE, repos='http://cran.rstudio.com/')" \
  && R -e "install.packages('cmprsk', dependencies=TRUE, repos='http://cran.rstudio.com/')" \
- && R -e "install.packages('https://cran.r-project.org/src/contrib/Archive/survminer/survminer_0.4.3.tar.gz', repos=NULL, type='source')"
+ && R -e "install.packages('https://cran.r-project.org/src/contrib/Archive/survminer/survminer_0.4.3.tar.gz', repos=NULL, type='source')" \ 
+ && R -e "install.packages('diffobj', dependencies=TRUE, repos='http://cran.rstudio.com/')" \
+ && R -e "install.packages('https://cran.r-project.org/src/contrib/Archive/waldo/waldo_0.2.4.tar.gz', repos=NULL, type='source')" \
+ && R -e "install.packages('VennDiagram', dependencies=TRUE, repos='http://cran.rstudio.com/')"
 
 #Add custom startup script
 COPY start_services.sh /usr/local/bin/start_services.sh
