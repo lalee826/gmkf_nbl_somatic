@@ -14,8 +14,6 @@ from sklearn.model_selection import cross_val_predict
 from sklearn.model_selection import train_test_split
 from sklearn import preprocessing as preprocessing
 from sklearn import metrics as metrics
-import matplotlib.pyplot as plt
-from itertools import cycle
 from tensorflow import keras
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense, Dropout
