@@ -221,7 +221,7 @@ model.add(Dense(n_classes,kernel_initializer='normal',activation='softmax'))
 #determine how to compile model
 model.compile(loss='sparse_categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
 # fit model on train set
-fitmodel = model.fit(x_train,y_train_1d, epochs=100, verbose=0)#, batch_size=2000)
+model.fit(x_train,y_train_1d, epochs=100, verbose=0)#, batch_size=2000)
 
 ### import our own data
 consensusVarsFile = workdir + 'Data/coding_mutations_annotated.tsv'
