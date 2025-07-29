@@ -23,11 +23,11 @@ uniqueVars = dplyr::left_join(uniqueVars,classifierPredictions,by='mutid')
 consensusVars = dplyr::left_join(consensusVars,classifierPredictions,by='mutid')
 
 #filter consensus variants
-'''
-the final call set include any variant call made by at least 3 callers
-any call made by 2 or fewer calls need a somatic prediction by the classifier
-to be included in the final call set.
-'''
+
+#the final call set include any variant call made by at least 3 callers
+#any call made by 2 or fewer calls need a somatic prediction by the classifier
+#to be included in the final call set.
+
 finalConsVars = consensusVars %>% filter(numCallers > 2 | Prediction != 'fail')
 finalUnVars = uniqueVars %>% filter(Prediction == 'somatic')
 
