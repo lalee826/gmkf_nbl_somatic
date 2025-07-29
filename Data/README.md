@@ -4,6 +4,7 @@ The files here are results files or supplementary data files obtained from analy
 
 - gene_signatures: collection of manually curated gene sets used in ssGSEA analysis
 - DeepSVR_training_data_preprocessed.pkl: pickle file of DeepSVR training data
+- GO_analysis: Parsed JSON file of gene ontology analysis of ranked list of pathogenic mutations in GMKF cohort
 - RNAseq_rsem_coding_TPM.tsv: Bulk RNA sequencing count data in the GMKF cohort
 - TARGET_harmonized_2018-03-31.csv: clinical data of the TARGET neuroblastoma cohort
 - adrn_mes_genes.csv: Canonical gene lists used in determing mes/adrn scores in neuroblastoma
@@ -23,6 +24,7 @@ The files here are results files or supplementary data files obtained from analy
 - sample_manifest.csv: Metadata file for GMKF tumors hosted on the cloud platform Cavatica
 - target_expmat.tsv: Bulk RNA expression count data for the TARGET cohort
 - target_gsva_for_classification.tsv: ssGSEA results of bulk RNA sequencing data in the TARGET cohort. Results shown here are scores binned into one of 40 quantiles from -20 to 20.
+- topPaths.RDS: R data file of top gene ontology pathways after analysis of ranked list of pathogenic mutations in GMKF cohort performed in online portal
 - tumor_clinical_data.tsv: Clinical and molecular features table of the GMKF cohort
 - tumor_purity_results.tsv: Results of tumor purity analysis performed in bulk RNA sequencind data of the GMKF cohort
 - unique_coding_mutations_full.tsv: Unannotated SNVs and short insertion/deletion mutations called by only one variant caller
