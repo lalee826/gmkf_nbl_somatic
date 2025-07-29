@@ -47,5 +47,5 @@
 
 **Module 8: Multivariate Cox proportional hazard modeling**
 
--08-01_CPHRegressionHRM.R: Performs covariate regression in CPH models after aggregating recurrently altered molecular features. Visualizes the regression and plots hazard ratios and univariate p-values and significance of model fit for each feature in high-risk, MYCN-amplified tumors.
--08-02_CPHRegressionHRN.R: Performs covariate regression in CPH models after aggregating recurrently altered molecular features. Visualizes the regression and plots hazard ratios and univariate p-values and significance of model fit for each feature in high-risk, non MYCN-amplified tumors. 
+- 08-01_CPHRegressionHRM.R: Performs covariate regression in CPH models after aggregating recurrently altered molecular features. Visualizes the regression and plots hazard ratios and univariate p-values and significance of model fit for each feature in high-risk, MYCN-amplified tumors.
+- 08-02_CPHRegressionHRN.R: Performs covariate regression in CPH models after aggregating recurrently altered molecular features. Visualizes the regression and plots hazard ratios and univariate p-values and significance of model fit for each feature in high-risk, non MYCN-amplified tumors. 
