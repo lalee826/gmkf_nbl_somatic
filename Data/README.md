@@ -1,6 +1,6 @@
 ## Data
 
-The files here are results files from analyses performed in the manuscript that can be used in the scripts to produce the visualizations or perform further analyses.
+The files here are results files or supplementary data files obtained from analyses performed in the manuscript that can be used in the scripts to produce the visualizations or perform further analyses.
 
 - gene_signatures: collection of manually curated gene sets used in ssGSEA analysis
 - DeepSVR_training_data_preprocessed.pkl: pickle file of DeepSVR training data
