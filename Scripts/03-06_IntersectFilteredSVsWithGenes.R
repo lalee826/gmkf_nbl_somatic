@@ -1,5 +1,7 @@
 ##################################################################################################################
-### Description: This script finds structural variant mutations that disrupt coding genes
+### Description: This script finds structural variant mutations that potentially disrupt coding genes
+###              - Helper functions are imported from the script sv_overlap_functions.R that perform intersection
+###                with gene bed files
 ###              
 
 library(parallel)
