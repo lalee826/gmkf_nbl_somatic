@@ -1,3 +1,4 @@
+case_id	Gene	Type
 PAUIDD	ADAMTS12-AKAP13	Fusion
 PARZCJ	ALK	missense_variant
 PAUKLK	ALK	missense_variant
@@ -177,7 +178,6 @@ PATLKI	FANCA	Translocation
 PAUHSJ	FGF14	Translocation
 PAUGVZ	FGF14	Translocation
 PASPGB	FOXO3	Translocation
-case_id	Gene	Type
 PATPIU	GRIN2A	Translocation
 PATMZJ	HDAC1	Translocation
 PASJRT	MSH2	Translocation
