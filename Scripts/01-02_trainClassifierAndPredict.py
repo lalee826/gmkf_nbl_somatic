@@ -258,7 +258,7 @@ predLabelsNBL = model.predict(data_scaled, verbose=0)
 #use max softmax probability to assign labels
 predicted = np.array([list(a).index(max(list(a))) for a in list(predLabelsNBL)])
 #look at prediction counts
-print(np.bincount(predicted))
+predCounts = np.bincount(predicted)
 
 #add classifier predictions to each variant
 nblData['prediction'] = predicted
