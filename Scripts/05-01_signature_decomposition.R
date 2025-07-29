@@ -1,4 +1,6 @@
-# This is an example performing with five samples 
+##################################################################################################################
+### Description: Performs mutational signature analysis using the deconstructSigs package 
+###              
 
 library(maftools)
 library(dplyr)
