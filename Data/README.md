@@ -14,9 +14,13 @@ The files here are results files or supplementary data files obtained from analy
 - cognbl_gmkf_clindata.csv: Clinical data of the GMKF cohort
 - cosmicv3_sig_contribution.tsv: Mutational signature decomposition results of the GMKF cohort
 - excluded_samples.RDS: R data file of samples that are excluded from analysis in the GMKF cohor due to suspicion of normal or cross-contamination
+- gmkf_gsea_results.tsv: Results of KEGG pathway GSEA analasis of GMKF vs. representative pan pediatric cancer cohor
 - gmkf_gsva_for_classification.tsv: ssGSEA results of bulk RNA sequencing data in the GMKF cohort. Results shown here are scores binned into one of 40 quantiles from -20 to 20.
 - gmkf_matched_features.pkl: bam-readcount output for GMKF tumors input into the variant refinment classifier in order to be assigned predicted labels
+- gmkf_path_muts.txt: Ranked list of pathogenic mutations manually annotated from representative pan pediatric cancer cohort
 - gmkf_tumor_allPathEvents.tsv: A comprehensive table of all pathogenic events detected in the GMKF cohort
+- grobner_gsea_results.tsv: Results of KEGG pathway GSEA analasis of GMKF vs. representative pan pediatric cancer cohort
+- grobner_path_muts.txt: Ranked list of pathogenic mutations manually annotated from representative pan pediatric cancer cohort
 - gsva_results_quantiles_plot_allgenes.tsv: Plotting data for ssGSEA results in the GMKF cohort
 - gsva_results_quantiles_plot_allgenes_target.tsv: Plotting data for ssGSEA results in the TARGET cohort
 - mes_adrn_scores.tsv: Analysis results of adrn/mes status of GMKF neuroblastoma tumors
