@@ -1,6 +1,7 @@
 ##################################################################################################################
-### Description: Perform gsva analysis using manually curated gene sets related to cancer
-###              Gene sets have been acquired from GO, as well as several independent research papers
+### Description: Perform single sample Gene set enrichment analysis using manually curated gene sets related to cancer
+###              - Gene sets have been acquired from GO, as well as several independent research papers
+###              - ssGSEA is performed using the GSVA package
 
 library(GSVA)
 library(dplyr)
