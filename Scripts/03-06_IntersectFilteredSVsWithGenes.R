@@ -81,6 +81,13 @@ lumpySVIntersect = detect_overlaps(df=dfl,bed=bed)
 novobreakSVIntersect = detect_overlaps(df=dfn,bed=bed)
 gridssSVIntersect = detect_overlaps(df=dfg,bed=bed)
 
+###Count intersected SVs to be used in analysis of pathogenecity
+svCounts = c(nrow(mantaSVIntersect),
+             nrow(lumpySVIntersect),
+             nrow(novobreakSVIntersect),
+             nrow(gridssSVIntersect))
+print(svCounts)
+
 ###save intersected SVs if desired
 #write.table(mantaSVIntersect,'',sep='\t',quote=FALSE,col.names=TRUE,row.names=FALSE)
 #write.table(lumpySVIntersect,'',sep='\t',quote=FALSE,col.names=TRUE,row.names=FALSE)
