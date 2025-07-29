@@ -1,0 +1,21 @@
+Gene Set	Description	Size	Leading Edge Number	ES	NES	P Value	FDR
+hsa04310	Wnt signaling pathway	5	2	0.875	1.5216	0.010114	0.3736
+hsa05167	Kaposi sarcoma-associated herpesvirus infection	12	4	0.71569	1.4147	0.039216	0.4371
+hsa05162	Measles	3	1	0.89474	1.3936	0.047482	0.38314
+hsa05016	Huntington disease	3	1	0.89474	1.3971	0.051205	0.3911
+hsa05219	Bladder cancer	6	3	0.78125	1.3999	0.063512	0.40685
+hsa05165	Human papillomavirus infection	13	6	0.70303	1.3858	0.0642	0.38844
+hsa05022	Pathways of neurodegeneration	5	3	0.79805	1.3757	0.064603	0.38742
+hsa05163	Human cytomegalovirus infection	11	4	0.71905	1.4017	0.070252	0.42527
+hsa05215	Prostate cancer	11	5	0.70612	1.3701	0.073661	0.35675
+hsa04211	Longevity regulating pathway	7	3	0.75058	1.3719	0.078478	0.36597
+hsa05223	Non-small cell lung cancer	7	3	0.75058	1.381	0.081272	0.3869
+hsa05210	Colorectal cancer	11	4	0.70204	1.3757	0.088525	0.36981
+hsa05200	Pathways in cancer	23	13	0.64372	1.3184	0.096074	0.43873
+hsa05224	Breast cancer	14	6	0.66831	1.3229	0.10367	0.45313
+hsa01522	Endocrine resistance	10	4	0.68611	1.3127	0.11857	0.44207
+hsa05168	Herpes simplex virus 1 infection	6	1	0.73913	1.3207	0.12666	0.44383
+hsa05010	Alzheimer disease	7	3	0.72365	1.3122	0.12868	0.43006
+hsa04152	AMPK signaling pathway	3	3	-0.67442	-1.411	0.14154	0.40866
+hsa04613	Neutrophil extracellular trap formation	3	3	-0.67442	-1.411	0.14154	0.40866
+hsa04930	Type II diabetes mellitus	3	3	-0.67442	-1.411	0.14154	0.40866

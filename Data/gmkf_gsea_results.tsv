@@ -1,0 +1,21 @@
+Gene Set	Description	Size	Leading Edge Number	ES	NES	P Value	FDR
+hsa04380	Osteoclast differentiation	5	5	-0.66225	-1.7214	0.027875	0.55888
+hsa03082	ATP-dependent chromatin remodeling	7	7	-0.47651	-1.5024	0.049774	0.80854
+hsa05202	Transcriptional misregulation in cancer	10	1	0.79365	1.5929	0.077106	1
+hsa05171	Coronavirus disease	3	3	-0.69281	-1.431	0.081325	0.43648
+hsa04666	Fc gamma R-mediated phagocytosis	4	4	-0.60526	-1.4781	0.093103	0.59762
+hsa04110	Cell cycle	11	4	0.73433	1.4392	0.12226	1
+hsa04611	Platelet activation	6	5	-0.44	-1.2978	0.13389	0.51071
+hsa04662	B cell receptor signaling pathway	9	8	-0.38503	-1.2964	0.13924	0.44938
+hsa04115	p53 signaling pathway	5	4	0.78422	1.4086	0.13976	1
+hsa04064	NF-kappa B signaling pathway	4	4	-0.60526	-1.4363	0.14433	0.53341
+hsa05017	Spinocerebellar ataxia	5	1	0.73675	1.3509	0.16076	1
+hsa04613	Neutrophil extracellular trap formation	4	4	-0.56579	-1.3273	0.16388	0.53472
+hsa05223	Non-small cell lung cancer	15	3	0.66457	1.4007	0.17603	1
+hsa05235	PD-L1 expression and PD-1 checkpoint pathway in cancer	9	3	0.70115	1.366	0.18294	1
+hsa04976	Bile secretion	3	2	-0.60784	-1.2498	0.20166	0.47534
+hsa05166	Human T-cell leukemia virus 1 infection	18	6	0.61957	1.3229	0.21254	1
+hsa04922	Glucagon signaling pathway	3	1	0.77243	1.3136	0.22995	1
+hsa04514	Cell adhesion molecules	6	2	0.69137	1.2777	0.23286	1
+hsa05206	MicroRNAs in cancer	21	11	0.5891	1.267	0.23449	1
+hsa05218	Melanoma	12	7	0.63377	1.3004	0.24503	1
