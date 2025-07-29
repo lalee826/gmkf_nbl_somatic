@@ -526,9 +526,12 @@ detect_overlaps <- function(df,bed) {
   for (c in chrs) {
     
     print(c)
-    #c = 'chrY'
     dfc = df[[c]]
     bedc = bed[[c]]
+
+    if (is.null(dfc)) {
+      next
+    }
     
     pos1e = dfc$pos_be1
     pos2e = dfc$pos_be2
