@@ -42,11 +42,15 @@ Once inside the container, clone this repository
 
 Rstudio can be opened on your local machine by navigating to localhost:8787 in your web browser. The username/password will be rstudio/rstudio.
 
-
 Jupyter Notebook can be opened on your local machine by navigating to localhost:8888 in your web browser. You will need to copy/paste the token that is shown in your terminal after opening the Docker container.  
 
 ### Raw Data
 
 Raw data is not stored in this repository. The files found in this repository's raw data folder are example files to demonstrate usage of the scripts. The full raw data can be obtained through the Kids First Data Resource Portal (https://portal.kidsfirstdrc.org/).  
 
-Please note that not all raw data files used in analyses from the manuscript can be found in the portal, for example, raw output from Sequenza, Shatterseek, GridSS, and others.
+Please note that not all raw data files used in analyses from the manuscript can be found in the portal, for example, raw output from Sequenza, Shatterseek, GridSS, Arriba, and others.
+
+### Replicating Analyses
+
+The majority of the analyses performed in the manuscript can be replicated using the provided scripts. The analyses are divided into 8 modules. All necessary packages with versions with which analyses were performed are provided in the Docker image.
+
